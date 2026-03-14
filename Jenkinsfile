@@ -133,11 +133,3 @@ pipeline {
         }
     }
 }
-```
-
-Save → then run these commands:
-```
-cd "C:\Users\Vikash Mishra\eclipse-workspace\JenkinsDeclarativePipelineWithTestNG"
-git add .
-git commit -m "Fix Jenkinsfile - parallel syntax and triggers"
-git push origin main
