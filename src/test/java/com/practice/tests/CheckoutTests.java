@@ -19,7 +19,7 @@ public class CheckoutTests {
     private String env;
     private boolean forceFailure;
 
-    @BeforeClass
+    @BeforeClass(alwaysRun=true)
     public void setup() {
         env          = System.getProperty("env", "dev");
         forceFailure = Boolean.parseBoolean(System.getProperty("forceFailure", "false"));
