@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>JenkinsPracticce</groupId>
+	<artifactId>JenkinsPracticce</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<properties>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<testng.version>7.8.0</testng.version>
+		<maven.surefire.version>3.1.2</maven.surefire.version>
+		<!--  These will be OVERRIDDEN by Jenkins pipeline parameters  -->
+		<env>dev</env>
+		<browser>chrome</browser>
+		<suite>regression</suite>
+	</properties>
+	<dependencies>
+		<!--  TestNG  -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<!--  Surefire Plugin: runs TestNG suites  -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.version}</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>src/test/resources/${suite}-suite.xml</suiteXmlFile>
+					</suiteXmlFiles>
+					<systemPropertyVariables>
+						<env>${env}</env>
+						<browser>${browser}</browser>
+						<suite>${suite}</suite>
+					</systemPropertyVariables>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

@@ -1,0 +1,19 @@
+<!-- REGRESSION SUITE Runs ALL regression tests IN PARALLEL (classes run 
+	simultaneously). parallel="classes" → each <class> runs in its own thread 
+	thread-count="3" → max 3 threads at a time This is the KEY config for Jenkins 
+	parallel stage demo. Used when suite=regression parameter is passed. -->
+<suite name="Regression Suite" verbose="1" parallel="classes"
+	thread-count="3">
+	<test name="Full Regression">
+		<groups>
+			<run>
+				<include name="regression" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.practice.tests.LoginTests" />
+			<class name="com.practice.tests.SearchTests" />
+			<class name="com.practice.tests.CheckoutTests" />
+		</classes>
+	</test>
+</suite>

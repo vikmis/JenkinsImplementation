@@ -1,0 +1,15 @@
+<!-- SMOKE SUITE Runs only @Test(groups = "smoke") tests. Used in Jenkins 
+	pipeline when suite=smoke parameter is passed. Fast feedback — only critical 
+	path tests. -->
+<suite name="Smoke Suite" verbose="1">
+	<test name="Login Smoke Tests">
+		<groups>
+			<run>
+				<include name="smoke" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.practice.tests.LoginTests" />
+		</classes>
+	</test>
+</suite>
